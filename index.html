@@ -331,7 +331,7 @@ function push(){clearTimeout(tmr);tmr=setTimeout(write,700)}
 $('#more').addEventListener('click',()=>render(false));
 $('#pickBtn').addEventListener('click',()=>pick(false));
 $('#pickWant').addEventListener('click',()=>pick(true));
-fetch('films.json').then(r=>r.json()).then(d=>{
+fetch('films.json?v=20261124b',{cache:'no-cache'}).then(r=>r.json()).then(d=>{
  films=d;
  const fests=new Set(d.flatMap(f=>f.a.map(a=>a[0])));
  $('#stat').textContent=`${d.length} films, ${d.reduce((n,f)=>n+f.a.length,0)} prizes, ${Math.min(...d.map(f=>f.y))} to ${Math.max(...d.map(f=>f.y))}.`;
